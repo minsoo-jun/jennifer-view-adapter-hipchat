@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://$USER_HOME$/dev/jennifer/jennifer-server-5.2.0/server.view/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/dev/jennifer/jennifer-server-5.2.0/server.view/lib" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/dev/jennifer/jennifer-server-5.2.0/server.view/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/dev/jennifer/jennifer-server-5.2.0/server.view/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
