@@ -4,7 +4,6 @@ import adapter.jennifer.hipchat.HipchatAdapter;
 import com.jennifersoft.view.adapter.JenniferModel;
 import com.jennifersoft.view.adapter.model.JenniferEvent;
 
-
 /**
  * Created by minsoo.jun on 12/27/16.
  */
