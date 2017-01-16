@@ -30,7 +30,7 @@ public class ConfUtil {
         FileInputStream in = null;
         String path = ConfigValue.adapter_config_path;
         if(isEmpty(path)){
-            path ="/usr/local/jennifer/jennifer5/server.view/ext/email.adapter/adapter.properties";
+            path ="/usr/local/jennifer/jennifer5/server.view/ext/hipchat.adapter/adapter.properties";
         }
         try{
             if(path != null){

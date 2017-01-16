@@ -33,3 +33,13 @@ hipchat_proxy_port=9999
 ```
 
 * Make sure to replace the hipchat property with the correct value
+
+## For develop
+Add class path
+```
+{{ VIEW_SERVER_HOME }}/lib
+```
+For avoid "@Override" error in HipchatAdapter
+```
+Project language level: 6 - @Override in interfaces
+```
