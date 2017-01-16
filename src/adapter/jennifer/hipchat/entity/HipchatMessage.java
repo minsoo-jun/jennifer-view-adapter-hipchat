@@ -1,6 +1,5 @@
 package adapter.jennifer.hipchat.entity;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -36,6 +35,11 @@ public class HipchatMessage {
         this.text = text;
     }
 
-    public HipchatProp getProp(){return this.prop;}
-    public String getText(){return this.text;}
+    public HipchatProp getProp() {
+        return this.prop;
+    }
+
+    public String getText() {
+        return this.text;
+    }
 }

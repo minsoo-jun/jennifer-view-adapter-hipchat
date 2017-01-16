@@ -8,7 +8,10 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.URL;
 
 /**
  * Created by minsoo.jun on 1/13/17.
@@ -17,7 +20,7 @@ public class HipChatClient {
     /**
      * Default connection time out value
      */
-    private final int CONNECTION_TIME_OUT	= 10000;
+    private final int CONNECTION_TIME_OUT = 10000;
 
     /**
      * HipchatMessage instance
@@ -26,20 +29,22 @@ public class HipChatClient {
 
     /**
      * Default constructor
+     *
      * @param message HipchatMessage object
      */
-    public HipChatClient(HipchatMessage message){
+    public HipChatClient(HipchatMessage message) {
         this.hipchatMessage = message;
     }
 
     /**
      * Push message to slack using simple URLConnection
+     *
      * @return Return either "ok" if message was sent, or null if message was not sent or an exception occured.
      */
-    public String push(){
+    public String push() {
         LogUtil.info("HipChatClient : push()");
         HttpURLConnection connection = null;
-        try{
+        try {
             HipchatProp prop = this.hipchatMessage.getProp();
             LogUtil.info("token : " + prop.getToken());
             LogUtil.info("apiId : " + prop.getApiId());
@@ -50,11 +55,11 @@ public class HipChatClient {
             LogUtil.info("isProxy : " + prop.getIsProxy());
             URL url = new URL(prop.getHipchatUrl());
 
-            if("on".equals(prop.getIsProxy())){
-                Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("dev-proxy.db.rakuten.co.jp", 9502));
+            if ("on".equals(prop.getIsProxy())) {
+                Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(prop.getProxyHost(), Integer.parseInt(prop.getProxyPort())));
                 connection = (HttpURLConnection) url.openConnection(proxy);
-            }else{
-                connection = (HttpURLConnection)url.openConnection();
+            } else {
+                connection = (HttpURLConnection) url.openConnection();
             }
 
             connection.setRequestMethod("POST");
@@ -78,16 +83,16 @@ public class HipChatClient {
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             String line;
             StringBuilder response = new StringBuilder();
-            while ( (line = reader.readLine()) != null )
+            while ((line = reader.readLine()) != null)
                 response.append(line + "\n");
 
             reader.close();
             return response.toString();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             LogUtil.error("Error while pushing message. Reason : " + ex.toString());
             return null;
-        }finally{
-            if(connection != null)
+        } finally {
+            if (connection != null)
                 connection.disconnect();
         }
     }

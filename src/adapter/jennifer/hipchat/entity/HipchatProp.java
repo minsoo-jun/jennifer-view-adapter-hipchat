@@ -39,11 +39,12 @@ public class HipchatProp {
     /**
      * @return
      */
-    public String getHipchatUrl(){
+    public String getHipchatUrl() {
         return this.getHipchatApiServer() + this.apiId + "/notification?auth_token=" + this.token;
     }
+
     public String getHipchatApiServer() {
-        if(this.hipchatApiServer == null){
+        if (this.hipchatApiServer == null) {
             this.hipchatApiServer = "https://api.hipchat.com/v2/room/";
         }
         return hipchatApiServer;
@@ -69,7 +70,9 @@ public class HipchatProp {
         this.token = token;
     }
 
-    public String getApiId() { return apiId;}
+    public String getApiId() {
+        return apiId;
+    }
 
     public void setApiId(String apiId) {
         this.apiId = apiId;

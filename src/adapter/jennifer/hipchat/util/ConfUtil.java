@@ -1,12 +1,12 @@
 package adapter.jennifer.hipchat.util;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-
 import adapter.jennifer.hipchat.entity.HipchatProp;
 import com.jennifersoft.view.adapter.util.LogUtil;
 import com.jennifersoft.view.config.ConfigValue;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 import static org.reflections.util.Utils.isEmpty;
 
@@ -25,40 +25,42 @@ public class ConfUtil {
      * The configuration file name and path must be set in <b>VIEW_SERVER_HOME/conf/server_view.conf<b> using the
      * <b>adapter_config_path</b> option
      */
-    public static void load(){
+    public static void load() {
         properties = new Properties();
         FileInputStream in = null;
         String path = ConfigValue.adapter_config_path;
-        if(isEmpty(path)){
-            path ="/usr/local/jennifer/jennifer5/server.view/ext/hipchat.adapter/adapter.properties";
+        if (isEmpty(path)) {
+            path = "/usr/local/jennifer/jennifer5/server.view/ext/hipchat.adapter/adapter.properties";
         }
-        try{
-            if(path != null){
+        try {
+            if (path != null) {
                 in = new FileInputStream(path);
                 properties.load(in);
             }
-        }catch(IOException io){
+        } catch (IOException io) {
             LogUtil.error("Failed to load configuration file: " + io.toString());
         }
     }
 
     /**
      * Get a configuration value using the provided key
+     *
      * @param key configuration key
      * @return String configuration value
      */
-    public static String getValue(String key){
-        if(properties == null)
+    public static String getValue(String key) {
+        if (properties == null)
             load();
         return properties.getProperty(key);
     }
 
     /**
      * Getter for the properties object.
+     *
      * @return the properties object
      */
     public static Properties getProperties() {
-        if(properties == null)
+        if (properties == null)
             load();
         return properties;
     }
@@ -68,9 +70,10 @@ public class ConfUtil {
      * The following properties must be set in the configuration file
      * <b>hipchart_apiid</b> The incoming WebHook URL
      * <b>hipchat_token</b> The Slack Channel Name (Or username) where message will be delivered
+     *
      * @return
      */
-    public static HipchatProp getHipchatProperties(){
+    public static HipchatProp getHipchatProperties() {
         HipchatProp prop = new HipchatProp();
         prop.setApiId(getValue("hipchat_apiid"));
         prop.setToken(getValue("hipchat_token"));
