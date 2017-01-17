@@ -46,3 +46,5 @@ For avoid "@Override" error in HipchatAdapter
 ```
 Project language level: 6 - @Override in interfaces
 ```
+### Class Diagrams
+![Class Diagrams](https://cloud.githubusercontent.com/assets/2956728/22003145/93fc46de-dc94-11e6-838e-d0fe39fa3271.png)
