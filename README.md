@@ -1,5 +1,8 @@
 ## Overview
 This adapter will send EVENT notification to hipchat room.
+About jennifer-view-adapter-jira plugin
+https://github.com/jennifersoft/jennifer-view-adapter-jira
+
 
 ## Getting started
 You must modify the configuration file of the view server. (conf/server_view.conf)
