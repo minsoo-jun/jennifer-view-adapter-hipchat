@@ -20,7 +20,7 @@ public class HipChatClient {
     /**
      * Default connection time out value
      */
-    private final int CONNECTION_TIME_OUT = 10000;
+    private final int CONNECTION_TIME_OUT = 3000;
 
     /**
      * HipchatMessage instance
@@ -53,6 +53,7 @@ public class HipChatClient {
             LogUtil.info("proxyHost : " + prop.getProxyHost());
             LogUtil.info("proxyPort : " + prop.getProxyPort());
             LogUtil.info("isProxy : " + prop.getIsProxy());
+            LogUtil.info("hipchat_noti_level : " + prop.getNotificationLevel());
             URL url = new URL(prop.getHipchatUrl());
 
             if ("on".equals(prop.getIsProxy())) {
@@ -63,7 +64,6 @@ public class HipChatClient {
             }
 
             connection.setRequestMethod("POST");
-
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setConnectTimeout(CONNECTION_TIME_OUT);
             connection.setUseCaches(false);

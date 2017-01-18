@@ -11,6 +11,20 @@ public class HipchatProp {
     private String proxyHost;
     private String proxyPort;
     private String isProxy;
+    /**
+     * NORMAL : ALL message notification on
+     * WARNING : only WARNING and FATAL
+     * FATAL : FATAL only
+     */
+    private String notificationLevel;
+
+    public String getNotificationLevel() {
+        return notificationLevel;
+    }
+
+    public void setNotificationLevel(String notificationLevel) {
+        this.notificationLevel = notificationLevel;
+    }
 
     public String getProxyHost() {
         return proxyHost;
