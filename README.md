@@ -28,7 +28,7 @@ hipchat_token=XXXXXXXX
 hipchat_jennifer_url=http://localhost:7900/login
 
 # Set NORMAL or WARNING or FATAL
-hipchat_noti_level="FATAL"
+hipchat_noti_level=FATAL
 
 
 # Set proxy setting
