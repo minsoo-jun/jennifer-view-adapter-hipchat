@@ -27,6 +27,10 @@ hipchat_token=XXXXXXXX
 # Set your jennifer server login URL
 hipchat_jennifer_url=http://localhost:7900/login
 
+# Set NORMAL or WARNING or FATAL
+hipchat_noti_level="FATAL"
+
+
 # Set proxy setting
 # Example : "on" or "off"
 # Example : on -> user proxy, off -> direct access
@@ -36,6 +40,9 @@ hipchat_proxy_port=9999
 ```
 
 * Make sure to replace the hipchat property with the correct value
+
+## version history
+2017-01-17 : v1.0.0 default functions. 
 
 ## For develop
 Add class path
