@@ -23,6 +23,7 @@ public class HipchatAdapter_test {
             je.setServiceName("Test Service Name");
             je.setMessage("Test Message");
             je.setMetricsName("Test MetricsName");
+            je.setEventLevel("WARNING");
             jm[0] = je;
 
             je = new JenniferEvent();
@@ -33,6 +34,7 @@ public class HipchatAdapter_test {
             je.setServiceName("Test Service Name ");
             je.setMessage("Test Message 2");
             je.setMetricsName("Test MetricsName 2");
+            je.setEventLevel("NORMAL");
             jm[1] = je;
 
 

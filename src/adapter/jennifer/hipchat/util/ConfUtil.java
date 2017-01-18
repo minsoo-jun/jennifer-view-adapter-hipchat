@@ -79,6 +79,7 @@ public class ConfUtil {
         prop.setToken(getValue("hipchat_token"));
         prop.setJenniferUrl(getValue("hipchat_jennifer_url"));
         prop.setHipchatApiServer(getValue("hipchat_api_server"));
+        prop.setNotificationLevel(getValue("hipchat_noti_level"));
         prop.setIsProxy(getValue("hipchat_proxy_on"));
         prop.setProxyHost(getValue("hipchat_proxy_host"));
         prop.setProxyPort(getValue("hipchat_proxy_port"));

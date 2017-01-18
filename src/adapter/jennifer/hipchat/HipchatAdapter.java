@@ -14,6 +14,7 @@ import java.util.Date;
 
 /**
  * Created by minsoo.jun on 12/27/16.
+ * https://www.hipchat.com/docs/apiv2/method/send_room_notification
  */
 public class HipchatAdapter implements JenniferAdapter {
     /**
@@ -36,7 +37,7 @@ public class HipchatAdapter implements JenniferAdapter {
 
             for (int i = 0; i < jennfierModel.length; i++) {
                 eventModel = (JenniferEvent) jennfierModel[i];
-                message = new HipchatMessage(hipchatProperties, this.jenniferEventToString(eventModel, hipchatProperties.getJenniferUrl()));
+                message = new HipchatMessage(hipchatProperties, this.jenniferEventToString(eventModel, hipchatProperties));
                 client = new HipChatClient(message);
                 client.push();
             }
@@ -49,19 +50,19 @@ public class HipchatAdapter implements JenniferAdapter {
      * String representation of the event to be used as the slack message body
      *
      * @param eventModel the event model
-     * @return event model as string (Slack message body)
+     * @return event model as string (hipchat message body)
      */
-    private String jenniferEventToString(JenniferEvent eventModel, String jenniferUrl) {
+    private String jenniferEventToString(JenniferEvent eventModel, HipchatProp hipchatProperties) {
         StringBuilder messageBody = new StringBuilder();
 
         messageBody.append("{\"message\":\"");
-        messageBody.append("The following event <b>" + eventModel.getErrorType() + "</b> was caught by JENNIFER<br/>");
+        messageBody.append("[" + eventModel.getEventLevel() +"] The following event <b>" + eventModel.getErrorType() + "</b> was caught by JENNIFER<br/>");
         messageBody.append("Here are some additional details<br/>");
         messageBody.append("---------------------------------------------------------------");
         messageBody.append("<table><tr><td>");
         messageBody.append("Affected Domain [ID:NAME]");
         messageBody.append("</td><td>");
-        messageBody.append("<a href='" + jenniferUrl + "'>");
+        messageBody.append("<a href='" + hipchatProperties.getJenniferUrl() + "'>");
         messageBody.append(eventModel.getDomainId() + ":" + eventModel.getDomainName() + "");
         messageBody.append("</a>");
         messageBody.append("</td></tr>");
@@ -105,7 +106,26 @@ public class HipchatAdapter implements JenniferAdapter {
         messageBody.append("---------------------------------------------------------------");
         messageBody.append("<br/>This message was created automatically by JENNIFER Hipchat Adapter");
 
-        messageBody.append("\",\"color\":\"purple\", \"message_format\":\"html\"}");
+        String color = "green";
+        Boolean notify = false;
+        if ("WARNING".equals(eventModel.getEventLevel())){
+            color = "purple";
+        }else if("FATAL".equals(eventModel.getEventLevel())){
+            color = "red";
+        }
+        if ("NORMAL".equals(hipchatProperties.getNotificationLevel())){
+            notify = true;
+        }else if ("WARNING".equals(hipchatProperties.getNotificationLevel())){
+            if("WARNING".equals(eventModel.getEventLevel()) ||"FATAL".equals(eventModel.getEventLevel()) ){
+                notify = true;
+            }
+        }else if ("FATAL".equals(hipchatProperties.getNotificationLevel())){
+            if("FATAL".equals(eventModel.getEventLevel()) ){
+                notify = true;
+            }
+        }
+        messageBody.append("\",\"color\":\"" + color + "\", \"message_format\":\"html\", \"notify\":" + notify + "}");
+
         return messageBody.toString();
     }
 }
