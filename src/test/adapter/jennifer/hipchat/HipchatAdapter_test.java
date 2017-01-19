@@ -12,7 +12,7 @@ public class HipchatAdapter_test {
     public static void main(String[] args) {
         try {
 
-            JenniferModel[] jm = new JenniferEvent[2];
+            JenniferModel[] jm = new JenniferEvent[3];
 
             JenniferEvent je = new JenniferEvent();
             short domainId = 1;
@@ -23,7 +23,7 @@ public class HipchatAdapter_test {
             je.setServiceName("Test Service Name");
             je.setMessage("Test Message");
             je.setMetricsName("Test MetricsName");
-            je.setEventLevel("WARNING");
+            je.setEventLevel("FATAL");
             jm[0] = je;
 
             je = new JenniferEvent();
@@ -34,9 +34,19 @@ public class HipchatAdapter_test {
             je.setServiceName("Test Service Name ");
             je.setMessage("Test Message 2");
             je.setMetricsName("Test MetricsName 2");
-            je.setEventLevel("NORMAL");
+            je.setEventLevel("WARNING");
             jm[1] = je;
 
+            je = new JenniferEvent();
+            je.setErrorType("3 Test error Type");
+            je.setDomainId(domainId);
+            je.setInstanceId(100003);
+            je.setDetailMessage("Jennifer Alert Test2");
+            je.setServiceName("Test Service Name 3 ");
+            je.setMessage("Test Message 3");
+            je.setMetricsName("Test MetricsName 3");
+            je.setEventLevel("NORMAL");
+            jm[2] = je;
 
             HipchatAdapter ha = new HipchatAdapter();
             ha.on(jm);

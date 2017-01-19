@@ -1,6 +1,6 @@
 ## Overview
 This adapter will send EVENT notification to hipchat room.
-[Jennifersoft gitbub](https://github.com/jennifersoft)
+[Jennifersoft github](https://github.com/jennifersoft)
 
 ## Getting started
 You must modify the configuration file of the view server. (conf/server_view.conf)
