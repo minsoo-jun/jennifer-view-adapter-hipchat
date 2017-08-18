@@ -9,7 +9,9 @@
 
 	<name>hipchat plugin for Jennifer</name>
 	<description>This adapter will send EVENT notification to hipchat room.</description>
-
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<build>
 		<plugins>
 			<plugin>
