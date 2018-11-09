@@ -46,6 +46,7 @@ public class HipChatClient {
         HttpURLConnection connection = null;
         try {
             HipchatProp prop = this.hipchatMessage.getProp();
+            /*
             LogUtil.info("token : " + prop.getToken());
             LogUtil.info("apiId : " + prop.getApiId());
             LogUtil.info("jenniferUrl : " + prop.getJenniferUrl());
@@ -54,6 +55,8 @@ public class HipChatClient {
             LogUtil.info("proxyPort : " + prop.getProxyPort());
             LogUtil.info("isProxy : " + prop.getIsProxy());
             LogUtil.info("hipchat_noti_level : " + prop.getNotificationLevel());
+            */
+
             URL url = new URL(prop.getHipchatUrl());
 
             if ("on".equals(prop.getIsProxy())) {
