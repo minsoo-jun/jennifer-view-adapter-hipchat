@@ -1,6 +1,6 @@
-package test.adapter.jennifer.hipchat;
+package com.aries.hipchat;
 
-import adapter.jennifer.hipchat.HipchatAdapter;
+import com.aries.hipchat.HipchatAdapter;
 import com.aries.extension.data.EventData;
 import com.aries.extension.data.InstanceData;
 

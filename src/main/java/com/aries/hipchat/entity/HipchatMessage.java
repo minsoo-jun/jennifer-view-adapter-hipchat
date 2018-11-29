@@ -1,6 +1,5 @@
-package adapter.jennifer.hipchat.entity;
+package com.aries.hipchat.entity;
 
-import org.json.JSONObject;
 
 /**
  * Created by minsoo.jun on 12/27/16.
@@ -13,11 +12,6 @@ public class HipchatMessage {
     private final String KEY_ATTACHMENT = "MESSAGE";
 
     private final String text;
-
-    /**
-     * The JSON object that will be used to construct the message payload
-     */
-    private JSONObject hipchatMessage = new JSONObject();
 
     /**
      * Hipchat properties instnace

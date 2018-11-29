@@ -1,6 +1,6 @@
-package adapter.jennifer.hipchat.util;
+package com.aries.hipchat.util;
 
-import adapter.jennifer.hipchat.entity.HipchatProp;
+import com.aries.hipchat.entity.HipchatProp;
 import com.aries.extension.util.PropertyUtil;
 
 public class ConfUtil {

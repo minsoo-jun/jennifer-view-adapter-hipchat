@@ -2,34 +2,108 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>adapter.jennifer</groupId>
-	<artifactId>jennifer-view-adapter-hipchat</artifactId>
+	<groupId>com.aries</groupId>
+	<artifactId>adapter-hipchat</artifactId>
 	<version>1.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>hipchat plugin for Jennifer</name>
 	<description>This adapter will send EVENT notification to hipchat room.</description>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <output.directoryName>${project.basedir}/dist</output.directoryName>
+        <output.fileName>${project.artifactId}-${project.version}</output.fileName>
 	</properties>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-        </plugins>
-	</build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.aries</groupId>
+            <artifactId>extension</artifactId>
+            <version>1.0.17</version>
+        </dependency>
+    </dependencies>
+
+	<profiles>
+		<profile>
+			<id>jennifer</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>1.8</source>
+							<target>1.8</target>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-shade-plugin</artifactId>
+						<configuration>
+							<artifactSet>
+								<excludes>
+									<exclude>com.aries:extension:*</exclude>
+									<exclude>javax.servlet:*</exclude>
+									<exclude>javax.xml.stream:*</exclude>
+									<exclude>org.springframework:*</exclude>
+									<exclude>org.apache.velocity:*</exclude>
+									<exclude>org.apache.commons:*</exclude>
+									<exclude>org.slf4j:*</exclude>
+									<exclude>org.json:*</exclude>
+									<exclude>org.reflections:*</exclude>
+									<exclude>org.quartz-scheduler:*</exclude>
+									<exclude>com.fasterxml.jackson.core:*</exclude>
+									<exclude>com.thoughtworks.xstream:*</exclude>
+									<exclude>com.google.code.gson:*</exclude>
+									<exclude>com.google.guava:*</exclude>
+									<exclude>com.google.http-client:*</exclude>
+									<exclude>com.navercorp.lucy:*</exclude>
+									<exclude>commons-fileupload:*</exclude>
+									<exclude>commons-codec:*</exclude>
+									<exclude>io.jsonwebtoken:*</exclude>
+									<exclude>httpunit:*</exclude>
+									<exclude>rhino:*</exclude>
+									<exclude>gdata:*</exclude>
+									<exclude>whois:*</exclude>
+								</excludes>
+							</artifactSet>
+							<outputFile>${output.directoryName}/${output.fileName}.${project.packaging}</outputFile>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>shade</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>http://support.jennifersoft.com:8081/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>mvnrepository</id>
+            <url>http://repo1.maven.org/maven2</url>
+        </repository>
+    </repositories>
 </project>

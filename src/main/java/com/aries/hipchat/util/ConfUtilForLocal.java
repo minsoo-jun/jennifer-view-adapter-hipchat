@@ -1,8 +1,7 @@
-package adapter.jennifer.hipchat.util;
+package com.aries.hipchat.util;
 
-import adapter.jennifer.hipchat.entity.HipchatProp;
-import com.jennifersoft.view.adapter.util.LogUtil;
-import com.jennifersoft.view.config.ConfigValue;
+import com.aries.hipchat.entity.HipchatProp;
+import com.aries.extension.util.LogUtil;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -27,10 +26,8 @@ public class ConfUtilForLocal {
     public static void load() {
         properties = new Properties();
         FileInputStream in = null;
-        String path = ConfigValue.adapter_config_path;
-        if (path == null) {
-            path = "/usr/local/jennifer/jennifer5/server.view/ext/hipchat.adapter/adapter.properties";
-        }
+        String path = "/usr/local/jennifer/jennifer5/server.view/ext/hipchat.adapter/adapter.properties";
+
         try {
             if (path != null) {
                 in = new FileInputStream(path);

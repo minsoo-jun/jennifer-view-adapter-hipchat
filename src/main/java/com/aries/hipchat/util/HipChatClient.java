@@ -1,9 +1,9 @@
-package adapter.jennifer.hipchat.util;
+package com.aries.hipchat.util;
 
-import adapter.jennifer.hipchat.entity.HipchatMessage;
-import adapter.jennifer.hipchat.entity.HipchatProp;
-import com.jennifersoft.view.adapter.util.LogUtil;
+import com.aries.hipchat.entity.HipchatMessage;
+import com.aries.hipchat.entity.HipchatProp;
 
+import com.aries.extension.util.LogUtil;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
@@ -46,16 +46,6 @@ public class HipChatClient {
         HttpURLConnection connection = null;
         try {
             HipchatProp prop = this.hipchatMessage.getProp();
-            /*
-            LogUtil.info("token : " + prop.getToken());
-            LogUtil.info("apiId : " + prop.getApiId());
-            LogUtil.info("jenniferUrl : " + prop.getJenniferUrl());
-            LogUtil.info("hipchatApiServer : " + prop.getHipchatApiServer());
-            LogUtil.info("proxyHost : " + prop.getProxyHost());
-            LogUtil.info("proxyPort : " + prop.getProxyPort());
-            LogUtil.info("isProxy : " + prop.getIsProxy());
-            LogUtil.info("hipchat_noti_level : " + prop.getNotificationLevel());
-            */
 
             URL url = new URL(prop.getHipchatUrl());
 

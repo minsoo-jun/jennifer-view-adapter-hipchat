@@ -1,4 +1,4 @@
-package adapter.jennifer.hipchat.entity;
+package com.aries.hipchat.entity;
 
 /**
  * Created by minsoo.jun on 12/27/16.

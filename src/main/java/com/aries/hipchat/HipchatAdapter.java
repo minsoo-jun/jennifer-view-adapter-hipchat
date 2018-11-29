@@ -1,13 +1,13 @@
-package adapter.jennifer.hipchat;
+package com.aries.hipchat;
 
-import adapter.jennifer.hipchat.entity.HipchatMessage;
-import adapter.jennifer.hipchat.entity.HipchatProp;
-import adapter.jennifer.hipchat.util.ConfUtil;
-import adapter.jennifer.hipchat.util.ConfUtilForLocal;
-import adapter.jennifer.hipchat.util.HipChatClient;
+import com.aries.hipchat.entity.HipchatMessage;
+import com.aries.hipchat.entity.HipchatProp;
+import com.aries.hipchat.util.ConfUtil;
+import com.aries.hipchat.util.ConfUtilForLocal;
+import com.aries.hipchat.util.HipChatClient;
 import com.aries.extension.data.EventData;
 import com.aries.extension.handler.EventHandler;
-import com.jennifersoft.view.adapter.util.LogUtil;
+import com.aries.extension.util.LogUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,14 +24,12 @@ public class HipchatAdapter implements EventHandler {
 
     @Override
     public void on(EventData[] eventData) {
-        LogUtil.info("HipchatAdapter : called");
 
         HipChatClient client;
         HipchatProp hipchatProperties;
         EventData eventModel;
         HipchatMessage message;
         try {
-            LogUtil.info("eventData length =" + eventData.length);
 
             hipchatProperties = ConfUtil.getHipchatProperties();
             // for local testing.
@@ -46,7 +44,7 @@ public class HipchatAdapter implements EventHandler {
                 client.push();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LogUtil.error(e.getMessage());
         }
     }
 
